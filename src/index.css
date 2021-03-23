@@ -1,0 +1,99 @@
+body {
+background-image: url('https://cdn.pixabay.com/photo/2018/02/15/22/49/wood-3156545_960_720.jpg') !important;
+background-repeat: repeat;
+background-size: cover;
+font-family: 'Roboto';
+font-weight: 300;
+min-height: 100vh;
+}
+
+body, html, .App, #auth-wrapper{
+  width: 100%;
+  height: 100%;
+
+}
+h1,h2,h3,span,label,p{
+
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+}
+h3{
+  text-align: center;
+}
+.navbar-light {
+  background-color: #F7F0AD;
+  box-shadow: 60px - 16px 80px black;
+  margin-bottom: 10px;
+  font-size: 20px;
+
+}
+.auth-inner{
+
+  box-shadow: inset 0 0 0.5em gold, 0 0 0.5em black;
+margin: auto;
+background-color: #F7F0AD ;
+width: 450px;
+padding: 35px 50px 35px 50px;
+border-radius: 15px;
+margin-top:200px;
+margin-bottom: 100px;
+
+
+}
+
+.auth-wrapper{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+
+}
+.auth-wrapper .form-control:focus{
+ border-color: #F5E962;
+
+}
+.auth-wrapper h2 {
+  text-align: center;
+  margin: 0;
+  padding-bottom: 10px;
+
+}
+
+.btn.btn-block{
+  background-color: #F5E962 ;
+  margin: 30px 0 30px 0;
+}
+.main {
+  background: #F7F0AD;
+  margin-top: 103px;
+}
+h5 {
+  text-align: center;
+
+}
+.footer{
+  background: #F7F0AD;
+  color:black;
+  box-shadow: 5px 0px 3px 5px black;
+
+
+}
+.jumbotron {
+  background-image: url('https://cdn.pixabay.com/photo/2017/08/05/12/33/flat-lay-2583213_960_720.jpg');
+height: 500px;
+background-repeat: no-repeat;
+text-align: right;
+}
+.navbar-light{
+  box-shadow: 5px 0px 3px black;
+}
+ a.nav-link:hover {
+  color: #F5E962 ;
+  text-shadow: 0.7px 0.7px 0.7px black;
+}
+
+a.nav-link:active, a.nav-link {
+  color: #DAA520 ;
+
+}
+
