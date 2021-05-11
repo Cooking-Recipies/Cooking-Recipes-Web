@@ -1,39 +1,26 @@
 import styled from 'styled-components';
 
-export const LoginBoxWrapper = styled.div`
+export const ReviewWrapper = styled.form`
+    min-height: 100px;
     display: flex;
-    align-items: center;
     flex-direction: column;
-    width: max(40%, 400px);
-    margin: 0 auto;
-    padding: 50px;
-    background-color: #7977A6;
-    border-radius: 14px;
-    border: 2px solid #494776;
-`;
-
-export const LoginForm = styled.form`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-`;
-
-export const ErrorMessage = styled.span`
-    color: #C0C0C0;
-    font-size: .9em;
-`;
-
-export const LoginInput = styled.input`
+    margin: 10px 0;
     padding: 10px;
+    background-color: white;
+    border: 2px solid #494776;
+    border-radius: 14px;
+`;
+
+export const ReviewTextarea = styled.textarea`
+    padding: 6px;
     margin: 6px 0;
-    width: 100%;
     border-radius: 4px;
     font-weight: bold;
     outline: none;
-    border: 2px solid ${({loginError}) => loginError ? 'red' : '#494776'};
+    border: 2px solid #494776;
     color: #858585;
-    
+    resize: vertical;
+
     &:focus {
         outline: none !important;
         border: 2px solid #F2AEC7;
@@ -41,9 +28,12 @@ export const LoginInput = styled.input`
     }
 `;
 
-export const LoginButton = styled.button`
-    width: 435px;
-    font-size: 1em;
+export const ReviewSelect = styled.select`
+    max-width: 200px;
+`;
+
+export const ReviewButton = styled.button`
+    font-size: 2em;
     padding: .2em;
     margin: 10px auto;
     border-radius: 4px;
@@ -61,4 +51,3 @@ export const LoginButton = styled.button`
         transition: border-color .0s;
     }
 `;
-

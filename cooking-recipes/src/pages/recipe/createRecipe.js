@@ -1,40 +1,26 @@
-import { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router';
-import { read, remove, update } from '../../components/requests/methods';
+import { useState } from 'react';
+import { useHistory } from 'react-router';
+import { create } from '../../components/requests/methods';
 import * as Style from './editRecipe.style';
 
-const EditRecipe = () => {
-    let { id } = useParams();
+const CreateRecipe = () => {
     const history = useHistory();
     const [recipe, setRecipe] = useState({
-        photos: [null,null,null],
-        title: 'loading...',
-        preparing_time: 'loading...',
-        number_of_people: 0,
-        instruction: 'loading...',
+        id: 0,
+        user_id: 0,
+        photos: [],
+        title: 'my mockup recipe',
+        preparing_time: '00:30',
+        number_of_people: 2,
+        instruction: 'my mockup instruction',
         reviews: [0,],
         likes: [0,],
-        category_id: 0,
-        tags: [0],
-        components: [0]
+        category_id: 1,
+        tags: ['tag'],
+        components: [{name: 'component', quantity: '1'}],
+        created_at: '',
+        updated_at: '',
     });
-
-    useEffect(() => {
-        read(`api/recipes/${id}`)
-        .then(resp => setRecipe(resp.data.data));
-    }, [id]);
-
-    const deleteRecipe = (e) => {
-        e.preventDefault();
-        remove(`api/recipes/${id}`)
-        .then(resp => {
-            if (resp.status === 200) {
-                history.push('/my-recipes');
-            } else {
-                //TODO: add error handle
-            }
-        });
-    }
 
     const handleUpdate = (e) => {
         const tmp = recipe;
@@ -53,12 +39,12 @@ const EditRecipe = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        update(`api/recipes/${id}`, recipe)
+        create('api/recipes', recipe)
         .then(resp => {
             if (resp.status === 200) {
-                history.push('/my-recipes');
+                history.push('/');
             } else {
-                //TODO: add error handle
+                //TODO: Make proper error
             }
         });
     };
@@ -66,8 +52,6 @@ const EditRecipe = () => {
     return(
         <Style.RecipeWrapper>
             <Style.RecipeForm action="" onSubmit={handleSubmit}>
-                <Style.DeleteButton onClick={deleteRecipe}>Delete</Style.DeleteButton>
-
                 <Style.RecipeLabel>Name</Style.RecipeLabel>
                 <Style.RecipeInput name="title" value={recipe.title} type="text" onChange={handleUpdate} required></Style.RecipeInput>
 
@@ -83,10 +67,10 @@ const EditRecipe = () => {
                 <Style.RecipeLabel>Image</Style.RecipeLabel>
                 <Style.ImageInput multiple name="images" type="file" onChange={handleImageUpdate}></Style.ImageInput>
 
-                <Style.RecipeButton type="submit">Save</Style.RecipeButton>
+                <Style.RecipeButton type="submit">Create</Style.RecipeButton>
             </Style.RecipeForm>
         </Style.RecipeWrapper>
     );
 };
 
-export default EditRecipe;
+export default CreateRecipe;

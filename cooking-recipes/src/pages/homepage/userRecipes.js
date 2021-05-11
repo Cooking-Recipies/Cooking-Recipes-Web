@@ -5,7 +5,7 @@ import { read } from '../../components/requests/methods';
 import { isLoggedIn } from '../../components/requests/request';
 import * as Style from './homepage.style';
 
-const Homepage = () => {
+const UserRecipes = () => {
     const history = useHistory();
     const [recipes, setRecipes] = useState([]);
     const [sorter, setSorter] = useState(null);
@@ -30,7 +30,7 @@ const Homepage = () => {
             history.push('/login');
         }
 
-        read('api/recipes?page=1')
+        read('api/users/me/recipes?page=1')
         .then(resp => {
             if (resp.status === 200) {
                 setPage({
@@ -47,7 +47,7 @@ const Homepage = () => {
     const movePages = (amount) => {
         if (page.currentPage + amount > 0 && page.currentPage + amount <= page.maxPages) {
             setPage({...page, currentPage: page.currentPage + amount});
-            read(`api/recipes?page=${page.currentPage + amount}`)
+            read(`api/users/me/recipes?page=${page.currentPage + amount}`)
             .then(resp => setRecipes(resp.data.data));
         }
     }
@@ -61,9 +61,7 @@ const Homepage = () => {
     };
 
     return(
-    
-           
-        <Style.ContentBox >
+        <Style.ContentBox>
             <Style.FiltersWrapper>
                 <Style.FilterSelect onChange={handleFitering}>
                     {filteringOptions.map(o => <option value={o.id} key={o.id}>{o.name}</option>)}
@@ -72,11 +70,10 @@ const Homepage = () => {
                     {sortingOptions.map(o => <option value={o.id} key={o.id}>{o.name}</option>)}
                 </Style.FilterSelect>
 
-                <Style.AddRecipe to='/my-recipes'>My recipes</Style.AddRecipe>
                 <Style.AddRecipe to='/recipe/add'>Add your recipe</Style.AddRecipe>
             </Style.FiltersWrapper>
 
-            {Object.values(recipes).map(r => typeof r === 'object' ? <Recipe recipe={r} key={r.recipe_id}></Recipe> : null)}
+            {Object.values(recipes).map(r => typeof r === 'object' ? <Recipe recipe={r} key={r.recipe_id} editable></Recipe> : null)}
 
             <Style.Pagination>
                 <Style.PageIndicator onClick={() => movePages(-1)}>prev</Style.PageIndicator>
@@ -84,7 +81,7 @@ const Homepage = () => {
                 <Style.PageIndicator onClick={() => movePages(1)}>next</Style.PageIndicator>
             </Style.Pagination>
         </Style.ContentBox>
-        );
+    );
 };
 
-export default Homepage;
+export default UserRecipes;

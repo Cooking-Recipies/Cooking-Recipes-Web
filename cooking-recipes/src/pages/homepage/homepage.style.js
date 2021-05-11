@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export const ContentBox = styled.div`
     width: 80%;
     margin: 0 auto;
+
 `;
 
 export const FiltersWrapper = styled.div`
@@ -46,5 +47,19 @@ export const AddRecipe = styled(Link)`
     &:active {
         background-color: #7977A6;
         transition: background-color .0s; 
+    }
+`;
+
+export const Pagination = styled.div`
+    margin-left: auto;
+    display: flex;
+    justify-content: space-evenly;
+`
+
+export const PageIndicator = styled.p`
+    color: whitesmoke;
+
+    &:hover {
+        cursor: pointer;
     }
 `;

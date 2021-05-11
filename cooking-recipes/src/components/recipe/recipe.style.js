@@ -9,6 +9,8 @@ export const RecipeWrapper = styled.div`
     background-color: white;
     border: 2px solid #494776;
     border-radius: 14px;
+
+   
 `;
 
 export const RecipeImage = styled.img`

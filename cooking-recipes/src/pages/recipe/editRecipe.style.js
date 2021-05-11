@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
 export const RecipeWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
     background-color: #7977A6;
     border: 2px solid #494776;
     border-radius: 14px;
+`;
+
+export const RecipeForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
 `;
 
 export const RecipeLabel = styled.label`
@@ -49,8 +52,8 @@ export const RecipeTextarea = styled.textarea`
 export const ImageInput = styled.input`
 `;
 
-export const RecipeButton = styled.div`
-    font-size: 2em;
+export const RecipeButton = styled.button`
+    font-size: 1.5em;
     padding: .2em;
     margin: 10px auto;
     border-radius: 4px;
@@ -66,5 +69,13 @@ export const RecipeButton = styled.div`
     &:active {
         border-color: #F2AEC7;
         transition: border-color .0s;
+    }
+`;
+
+export const DeleteButton = styled(RecipeButton)`
+    margin 10px 10px 10px auto;
+
+    &:active {
+        border-color: red;
     }
 `;
